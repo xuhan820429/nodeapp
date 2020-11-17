@@ -5,13 +5,13 @@ Backend
 1. setup the database
    - sqlite database
    - js-orm: sequelize setup
-   - dao service CRUD on database
 2. setup the express server
    - setup init server
    - setup 3rd party middleware (body-parser, cookie-parser, view engine, express.static folder)
    - setup main entry point
    - setup route
    - setup services
+     - dao service CRUD on database
      - password service: hash, verify
      - jwt service: sign jwt, verify jwt, set jwt in cookie, get jwt in cookie, clear jwt in cookie
      - error handling service

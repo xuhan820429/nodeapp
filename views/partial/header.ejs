@@ -8,16 +8,25 @@
     <header>
         <h3>Nodejs Application</h3>
         <%if(user){%>
-            <h3>Welcome, <%= user.email%> </h3>
+        <h3>Welcome, <%= user.email%> </h3>
         <%}else{%>
-            <h3>Welcom, annoymous</h3>
+        <h3>Welcom, annoymous</h3>
         <%}%>
     </header>
+
+
     <nav>
         <a href="/">Home</a>
+        <%if(!user){%>
         <a href="/user/signup">Sign Up</a>
         <a href="/user/login">Login</a>
+        <%}%>
+
+        <%if(user){%>
         <a href="/user/logout">Logout</a>
+        <%}%>
+
+
     </nav>
     <main>
 

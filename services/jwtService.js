@@ -52,6 +52,10 @@ class JWTService {
             return null
         }
     }
+
+    clearJWTInCookie(res){
+        res.clearCookie('jwt')
+    }
 }
 
 

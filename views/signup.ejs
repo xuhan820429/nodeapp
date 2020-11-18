@@ -1,5 +1,41 @@
 <%- include("partial/header.ejs");%>
 
-signup
+<form id="signupForm">
+    <label for="email">email:</label>
+    <input type="email" name="email" placeholder="iamleohan@gmail.com"><br>
+    <label for="password">password:</label>
+    <input type="password" name="password" placeholder="password"><br>
+    <button type="submit">Login</button>
+</form>
 
+
+<script>
+
+    let form = document.querySelector("#signupForm")
+    form.addEventListener("submit", async event => {
+        try {
+            event.preventDefault()
+            let data = {
+                email: form.email.value,
+                password: form.password.value
+            }
+            let resp = await fetch('/user/signup', {
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data),
+                method: "POST"
+            })
+            let result = await resp.json()
+            if (result["error"]) {
+                showErrorMsg(result["error"])
+            } else {
+                location.assign('/')
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    })
+
+</script>
 <%- include("partial/footer.ejs");%>

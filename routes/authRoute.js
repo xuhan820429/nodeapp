@@ -14,12 +14,19 @@ router.get('/logout', (req, res) => {
 
 //post method
 router.post("/login", (req, res) => {
-    
-
+    try {
+        console.log(req.body)
+    } catch (err) {
+        throw err
+    }
 })
 
 router.post("/signup", (req, res) => {
-
+    try {
+        console.log(req.body)
+    } catch (err) {
+        throw err
+    }
 })
 
 module.exports = router

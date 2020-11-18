@@ -22,7 +22,7 @@
 
             function showErrorMsg(msg) {
                 let errorBoard = document.querySelector("#errorboard")
-                if (msg) {
+                if (msg==null) {
                     errorBoard.innerHTML = ""
                 } else {
                     errorBoard.innerHTML = `<span>${msg}</span>`

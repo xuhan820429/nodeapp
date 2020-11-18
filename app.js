@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 
 const authRouter = require('./routes/authRoute')
-
+const { canActive, getPayloadFromJWT } = require('./middleware/authMiddleware')
 
 const app = express()
 
@@ -17,11 +17,11 @@ app.listen(3000, () => {
 })
 
 
-
+app.get("*", getPayloadFromJWT)
 app.get("/", (req, res) => {
     res.render("home")
 })
-app.get("/content", (req, res) => {
+app.get("/content", canActive, (req, res) => {
     res.render("content")
 })
 

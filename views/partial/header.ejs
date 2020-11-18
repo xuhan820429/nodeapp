@@ -6,7 +6,12 @@
 
 <body>
     <header>
-        <h1>Nodejs Application</h1>
+        <h3>Nodejs Application</h3>
+        <%if(user){%>
+            <h3>Welcome, <%= user.email%> </h3>
+        <%}else{%>
+            <h3>Welcom, annoymous</h3>
+        <%}%>
     </header>
     <nav>
         <a href="/">Home</a>
@@ -22,7 +27,7 @@
 
             function showErrorMsg(msg) {
                 let errorBoard = document.querySelector("#errorboard")
-                if (msg==null) {
+                if (msg == null) {
                     errorBoard.innerHTML = ""
                 } else {
                     errorBoard.innerHTML = `<span>${msg}</span>`

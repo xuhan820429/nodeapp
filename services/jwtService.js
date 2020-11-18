@@ -29,11 +29,28 @@ class JWTService {
         }
     }
 
+    verifyJWT(token){
+        try {
+            let payload = jwt.verify(token, this._secret);
+            return payload
+          } catch(err) {
+            throw err
+          }
+    }
+
     setJWTInCookie(res, token) {
         res.cookie("jwt", token, {
             maxAge: this._cookie_max_age,
             httpOnly: true
         })
+    }
+
+    getJWTFromCookie(req){
+        if(req.cookies['jwt']){
+            return req.cookies['jwt']
+        }else{
+            return null
+        }
     }
 }
 

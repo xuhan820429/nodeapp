@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 
+const authRouter = require('./routes/authRoute')
 
 
 const app = express()
@@ -23,3 +24,5 @@ app.get("/", (req, res) => {
 app.get("/content", (req, res) => {
     res.render("content")
 })
+
+app.use("/user", authRouter)

@@ -2,6 +2,7 @@ const express = require('express')
 
 const daoService = require('./../services/daoService')
 const errorService = require('./../services/errorService')
+const jwtService = require('./../services/jwtService')
 const router = express.Router()
 
 // get method
@@ -19,6 +20,8 @@ router.get('/logout', (req, res) => {
 router.post("/login", async (req, res) => {
     try {
         let user = await daoService.getUser(req.body)
+        let token = jwtService.signJWT(user)
+        jwtService.setJWTInCookie(res, token)
         res.status(200).json(user)
     } catch (err) {
         console.log(errorService.parseError(err))
@@ -29,6 +32,8 @@ router.post("/login", async (req, res) => {
 router.post("/signup", async (req, res) => {
     try {
         let user = await daoService.createUser(req.body)
+        let token = jwtService.signJWT(user)
+        jwtService.setJWTInCookie(res, token)
         res.status(201).json(user)
     } catch (err) {
         console.log(errorService.parseError(err))
